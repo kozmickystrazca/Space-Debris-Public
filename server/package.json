@@ -1,0 +1,23 @@
+{
+  "name": "node_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test/*.test.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-asserttype": "^1.0.5",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "helmet": "^6.0.0",
+    "mocha": "^10.0.0",
+    "supertest": "^6.2.4"
+  }
+}

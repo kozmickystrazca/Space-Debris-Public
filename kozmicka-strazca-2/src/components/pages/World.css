@@ -1,0 +1,38 @@
+.range {
+  position: absolute;
+  bottom: 1.5em;
+  color: white;
+  width: 98.5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+body {
+  overflow: hidden;
+  background-color: #000;
+  touch-action: pan-y;
+}
+
+.MuiBackdrop-root css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
+  background-color: transparent;
+}
+
+.filter > h1,
+h5 {
+  margin: 0.5em 0em;
+}
+
+@media screen and (max-width: 880px) {
+  .range {
+    position: absolute;
+    bottom: 4em;
+    color: rgb(255, 255, 255);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}

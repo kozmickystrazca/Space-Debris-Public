@@ -1,0 +1,26 @@
+.slider {
+  width: 70vw;
+  height: 20px;
+  -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: white;
+  cursor: pointer;
+  border-radius: 40px;
+}
+
+@media screen and (max-width: 880px) {
+  .slider {
+    order: -1;
+    width: 90vw;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border-radius: 20px;
+    margin-top: 1em;
+  }
+}

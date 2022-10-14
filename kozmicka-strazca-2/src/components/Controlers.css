@@ -1,0 +1,70 @@
+.controls-background2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3em;
+  border-radius: 20px;
+  background: transparent;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.controls-background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3em;
+  border-radius: 20px;
+  background: transparent;
+  border: 1px solid rgb(255, 255, 255);
+  position: absolute;
+  bottom: 25vh;
+  right: 0.5em;
+  width: 2em;
+}
+
+.zoomButtons {
+  margin: 0.1em 0;
+  font-size: 1.5rem;
+  background: transparent;
+  color: white;
+  border: none;
+  z-index: 999;
+}
+
+.flex {
+  margin: -0em -0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+#button-controls {
+  display: none;
+}
+
+@media screen and (max-width: 880px) {
+  .controls-background2 {
+    display: none;
+  }
+
+  .flex {
+    margin: 0;
+  }
+
+  #button-controls {
+    display: block;
+    position: absolute;
+    right: 0.3em;
+    bottom: 1em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #button-controls {
+    display: block;
+    position: absolute;
+    right: 0.3em;
+    bottom: 1em;
+  }
+}

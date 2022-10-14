@@ -1,0 +1,137 @@
+.menu {
+  position: absolute;
+  top: 0%;
+  color: white;
+  font-size: 0.8rem;
+  z-index: 999;
+}
+
+.menu-button {
+  margin: 1em 1em;
+  font-size: 1rem;
+  text-align: center;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 11px;
+  border: 1px solid;
+  transition: all 0.3s ease-out;
+}
+
+.drawer {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  color: white;
+  padding-top: 1em;
+  height: 100vh;
+}
+
+.readmore-button {
+  margin: 1em 1em;
+  font-size: 1rem;
+  text-align: center;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 30px;
+  border: 1px solid;
+  transition: all 0.3s ease-out;
+}
+
+.filter-background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-name {
+  font-size: 1.5rem;
+  padding-left: 0.5em;
+  align-self: flex-start;
+}
+
+input[type="checkbox"] {
+  height: 23px;
+  width: 23px;
+  margin-right: 0.8em;
+  margin-top: 0.5em;
+  margin-left: 0.7em;
+}
+
+.filter-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5em;
+}
+
+.filter-subname {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  width: 8em;
+  height: 2em;
+}
+
+.orbit-distance {
+  font-size: 0.5rem;
+  margin-top: 0.1em;
+}
+
+.language-in-menu-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0%;
+  left: 0vh;
+  width: 14.4em;
+}
+
+.readmore-button:hover,
+.menu-button:hover,
+.language-button-in-menu:hover {
+  transition: all 0.3s ease-out;
+  background: #fff;
+  color: #242424;
+  transition: 250ms;
+  cursor: pointer;
+}
+
+.language-button-in-menu {
+  height: 1em;
+  font-size: 1rem;
+  text-align: center;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 11px;
+  border: 1px solid;
+  transition: all 0.3s ease-out;
+  margin: 1em 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+}
+
+@media screen and (max-width: 450px) {
+  .menu-button {
+    margin: 1em 1em;
+    font-size: 0.7rem;
+    text-align: center;
+    background-color: transparent;
+    color: #fff;
+    padding: 6px 9px;
+    border: 1px solid var(--primary);
+    transition: all 0.3s ease-out;
+  }
+}
+
+@media screen and (max-width: 305px) {
+  .optimalization-buttons > .menu-button {
+    margin: 0;
+    margin-top: 0.5em;
+  }
+}

@@ -1,0 +1,112 @@
+.box-aboutObject {
+  position: absolute;
+  top: 50%;
+  right: 0em;
+  transform: translate(-10%, -50%);
+  width: 25em;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  background: linear-gradient(
+    90deg,
+    rgb(28, 27, 27) 0%,
+    rgba(26, 23, 23, 0.515) 100%
+  );
+  color: white;
+  border: 2px solid #000;
+  box-shadow: 24;
+  padding: 1em;
+  height: 51vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-aboutObject {
+  position: fixed;
+  right: 0vw;
+}
+
+.box-content-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  align-self: flex-start;
+}
+
+.debris-modal {
+  height: 1.5em;
+  margin-right: 0.5em;
+}
+
+.box-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1.1em;
+  font-size: 1.5rem;
+  width: 15em;
+  gap: 20px;
+}
+
+@media screen and (max-width: 880px) {
+  .box-aboutObject {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    background: linear-gradient(
+      90deg,
+      rgb(28, 27, 27) 0%,
+      rgba(26, 23, 23, 0.515) 100%
+    );
+    color: white;
+    border: 2px solid #000;
+    box-shadow: 24;
+    padding: 1em;
+    height: 42vh;
+    text-align: start;
+  }
+
+  .box-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2em;
+    font-size: 1rem;
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
+
+  .box-content-title {
+    font-size: 1.2rem;
+    width: 10.6em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .box-aboutObject {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65vw;
+    max-height: calc(80vh - 200px);
+    overflow-y: auto;
+    background: linear-gradient(
+      90deg,
+      rgb(28, 27, 27) 0%,
+      rgba(26, 23, 23, 0.515) 100%
+    );
+    color: white;
+    border: 2px solid #000;
+    box-shadow: 24;
+    padding: 1em;
+    height: 35vh;
+    text-align: start;
+  }
+}

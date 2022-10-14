@@ -1,0 +1,46 @@
+.debris {
+  height: 1.5em;
+  margin-left: 1em;
+  margin-top: 0.2em;
+  margin-right: 0.3em;
+}
+
+.display-count-objects {
+  position: absolute;
+  top: 0%;
+  width: 97vw;
+  height: 2.5em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 880px) {
+  .display-count-objects {
+    position: absolute;
+    top: 0%;
+    width: 100vw;
+    height: 2.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .display-count-objects {
+    position: absolute;
+    top: 0%;
+    width: 97vw;
+    height: 2.5em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+    font-size: 1rem;
+  }
+}

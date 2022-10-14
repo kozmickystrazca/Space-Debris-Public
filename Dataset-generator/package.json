@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "convert-csv-to-json": "^1.3.3"
+  }
+}

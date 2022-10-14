@@ -1,0 +1,407 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap");
+
+.home-body {
+  /* background-image: url("/public/home-background.jpg"
+    background-size: cover;
+    background-position:center;*/
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+a {
+  color: #ff1f8f;
+}
+
+.home-button {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 2rem;
+  text-align: center;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 30px;
+  border: 1px solid;
+  transition: all 0.3s ease-out;
+}
+
+.language-button {
+  height: 1em;
+  font-size: 1rem;
+  text-align: center;
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 11px;
+  border: 1px solid;
+  transition: all 0.3s ease-out;
+  margin-top: 1em;
+  margin-right: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  position: absolute;
+  width: 99vw;
+  bottom: 1vh;
+  height: 2em;
+  gap: 30px;
+}
+
+.space {
+  height: 1.5em;
+  margin-top: 0.2em;
+}
+
+.innovlab {
+  margin-bottom: 0.1em;
+}
+
+.icona {
+  font-size: 1.7rem;
+  color: red;
+  margin-right: 0.7em;
+  cursor: pointer;
+}
+
+.name-modal {
+  font-size: 1.2rem;
+  margin-right: 0.4em;
+}
+
+.OAA {
+}
+
+.logos-background {
+  width: 5em;
+}
+
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+}
+
+.box-readmore {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  color: white;
+  border: 2px solid #000;
+  box-shadow: 24;
+  padding: 1em;
+  height: 90vh;
+  text-align: justify;
+}
+
+.size {
+  width: 79vw;
+}
+
+.box-verticalpanel {
+  display: flex;
+  flex-direction: row;
+}
+
+.home-button:hover {
+  transition: all 0.3s ease-out;
+  background: #fff;
+  color: #242424;
+  transition: 250ms;
+}
+
+.language-button:hover {
+  transition: all 0.3s ease-out;
+  background: #fff;
+  color: #242424;
+  transition: 250ms;
+}
+
+.home-button-section {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.close {
+  position: absolute;
+  left: 90vw;
+}
+
+.home-name-section {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}
+
+.home-button-background {
+  background-color: rgba(0, 0, 0, 0.682);
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.language-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100vw;
+  position: absolute;
+  height: 3em;
+  top: 0vh;
+}
+
+.nad {
+  white-space: nowrap;
+  position: relative;
+  left: 1em;
+  font-family: "Raleway", sans-serif;
+  font-size: 4rem;
+  text-align: center;
+  letter-spacing: 0.1em;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: white;
+  text-shadow: 4px 4px #ff1f8f, 10px 10px #000000;
+}
+
+.pod {
+  font-size: 2rem;
+  position: relative;
+  left: 1.6em;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 0.1em;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  text-shadow: 4px 4px #0065e9, 7px 7px #000000;
+}
+
+@media screen and (max-width: 1300px) {
+  .nad {
+    font-size: 3.3rem;
+  }
+
+  .pod {
+    font-size: 2.5rem;
+    left: 1.3em;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .home-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-button-section {
+    width: 100vw;
+    height: 17em;
+  }
+
+  .home-name-section {
+    width: 100vw;
+    height: 17em;
+  }
+
+  .nad {
+    left: 0em;
+  }
+
+  .pod {
+    left: 0em;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .nad {
+    font-size: 2.5rem;
+  }
+
+  .pod {
+    font-size: 1.9rem;
+  }
+
+  .home-logos {
+    justify-content: center;
+    height: 1.7em;
+    gap: 20px;
+    width: 100vw;
+  }
+
+  .box-verticalpanel {
+    flex-direction: column;
+  }
+
+  .size {
+    width: 88vw;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .nad {
+    font-size: 1.8rem;
+    margin-bottom: 0.3em;
+  }
+
+  .pod {
+    font-size: 1.2rem;
+  }
+
+  .home-logos {
+    height: 1.2em;
+    gap: 5px;
+  }
+
+  .space {
+    height: 1.2em;
+    margin-top: 0em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .nad {
+    font-size: 1.5rem;
+  }
+
+  .pod {
+    font-size: 1.2rem;
+  }
+
+  .space {
+    height: 1.2em;
+    margin-top: 0em;
+  }
+
+  .home-logos {
+    height: 1.2em;
+    gap: 5px;
+  }
+}
+
+@media screen and (max-width: 366px) {
+  .space {
+    height: 0.7em;
+    margin-top: 0em;
+    align-items: center;
+  }
+
+  .home-logos {
+    height: 0.7em;
+  }
+
+  .home-name-section {
+    height: auto;
+    margin: 2em 0;
+    margin-top: 3em;
+  }
+}
+
+@media screen and (max-width: 281px) {
+  .nad {
+    font-size: 1.3rem;
+  }
+
+  .pod {
+    font-size: 1rem;
+  }
+
+  .space {
+    height: 0.7em;
+    margin-top: 0em;
+  }
+
+  .home-logos {
+    height: 0.7em;
+    gap: 5px;
+  }
+}
+
+/* height */
+@media screen and (max-height: 620px) {
+  .home-button-section {
+    height: auto;
+    margin-top: 1em;
+  }
+
+  .home-name-section {
+    height: auto;
+    margin: 2em 0;
+    margin-top: 4em;
+  }
+}
+
+@media screen and (max-height: 569px) and (max-width: 321px) {
+  .home-button-section {
+    height: auto;
+    margin-top: 1em;
+  }
+
+  .home-name-section {
+    height: auto;
+    margin: 2em 0;
+    margin-top: 5em;
+  }
+}
+
+@media screen and (max-height: 476px) {
+  .home-button-section {
+    height: auto;
+    margin-top: 0em;
+  }
+
+  .home-name-section {
+    height: auto;
+    margin: 0 0;
+    margin-top: 1.5em;
+  }
+
+  .home-button {
+    background-color: rgba(0, 0, 0, 0.682);
+  }
+
+  .space {
+    margin-top: 0;
+    height: 1.2em;
+  }
+
+  .home-logos {
+    height: 1.2em;
+    gap: 5px;
+  }
+
+  .home-button-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 100px;
+    background: none;
+  }
+
+  .box-readmore {
+    max-height: 80vh;
+    height: 80vh;
+  }
+}
