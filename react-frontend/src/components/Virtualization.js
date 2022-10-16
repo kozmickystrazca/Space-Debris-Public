@@ -32,6 +32,7 @@ export default function Virtualization(props) {
     earthRadiusKm,
   } = props;
 
+  //update objects locations
   const objectsData = useMemo(() => {
     if (!satData) return [];
     const gmst = satellite.gstime(time);
@@ -68,6 +69,7 @@ export default function Virtualization(props) {
     return data;
   }, [satData, time]);
 
+//get clicked object data from backend
   async function fetchInfoOnClick(apiUrl, obj) {
     try {
       const response = await fetch(apiUrl);

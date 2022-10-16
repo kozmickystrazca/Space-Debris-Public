@@ -40,7 +40,7 @@ export default function World() {
     });
   };
   const [time, setTime] = useState(new Date());
-  const EARTH_RADIUS_KM = 6371; // km
+  const EARTH_RADIUS_KM = 6371;
   const TIME_STEP = 8000;
   const [objectInfoOnClick, satObjectInfoOnClick] = useState({
     fetch: "",
@@ -65,6 +65,7 @@ export default function World() {
   const [countObjects, setCountObjects] = useState(0);
   const [countJunk, setJunkCount] = useState(0);
 
+  //zoom orbit optimalization
   useEffect(() => {
     if (isOpenModalSatInfo) return;
 
@@ -81,6 +82,7 @@ export default function World() {
     globeEl.current !== undefined && globeEl.current.controls().getDistance(),
   ]);
 
+  //session for zoom
   useEffect(() => {
     if (isOpenModalSatInfo) return;
     const timewait = setTimeout(() => {
@@ -96,6 +98,7 @@ export default function World() {
       globeEl.current.pointOfView().lat.toFixed(2),
   ]);
 
+  //fetch data from backend based on user selections from filters
   async function fetching(apiUrl) {
     try {
       const response = await fetch(apiUrl);
@@ -223,6 +226,7 @@ export default function World() {
     }
   }
 
+  //Detect when frames drop and show modal
   useEffect(() => {
     if (isCheckedFilter.anima === false) {
       let looper = new FrameTicker(30, 15);
@@ -250,10 +254,12 @@ export default function World() {
       });
     }
   }, []);
+
   const detectSize = () => {
     window.location.reload();
   };
 
+  //reload page when size of window changed
   useEffect(() => {
     window.addEventListener("resize", detectSize);
     return () => {
@@ -261,6 +267,7 @@ export default function World() {
     };
   }, []);
 
+  //get data from session
   useEffect(() => {
     const sessionFilters = JSON.parse(sessionStorage.getItem("filters"));
     const sessionView = JSON.parse(sessionStorage.getItem("pointOfView"));
@@ -283,6 +290,7 @@ export default function World() {
     }
   }, []);
 
+  //set data for session
   useEffect(() => {
     const sessionFilters = {
       less: isCheckedFilter.less,
@@ -297,6 +305,7 @@ export default function World() {
     sessionStorage.setItem("filters", JSON.stringify(sessionFilters));
   }, [isCheckedFilter, year]);
 
+  //Frame ticker for moving objects
   useEffect(() => {
     (function frameTicker() {
       if (isCheckedFilter.anima === false) {
@@ -307,7 +316,8 @@ export default function World() {
       }
     })();
   }, []);
-  
+
+  //fetch data from backend and set loader while loading
   useEffect(() => {
     const timeout = setTimeout(() => {
       fetching("https://www.kozmickystrazca.sk/api/data/animation");
