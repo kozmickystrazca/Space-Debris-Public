@@ -86,9 +86,6 @@ def is_language_working(language_shortcut):
     else:
         print("Unknown language shortcut!")
 
-    print(keywords)
-    print(expected_keywords)
-
     return keywords == expected_keywords
 
 def language_working():
