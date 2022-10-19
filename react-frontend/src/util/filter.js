@@ -1,6 +1,10 @@
 //Deutsche Telekom IT Solutions Slovakia 2022
 //Created by: Ádám Tamáš
 
+
+/*
+Main function, 
+*/
 export function dataFilter(year, type, orbit, data, isOptimazed) //type: ALL, SAT, JUNK
     {
         let result_data = getByYear(data, year);
@@ -34,7 +38,7 @@ export function dataFilter(year, type, orbit, data, isOptimazed) //type: ALL, SA
  }
  
  
-function getBySatellite(own_data, isSat) {
+function getBySatellite(own_data, isSat) {  //return an array containing only satellites
         return own_data.filter(
             function(sat)
             {
@@ -43,7 +47,7 @@ function getBySatellite(own_data, isSat) {
         );
     }
     
-function getByYear(own_data, year) {
+function getByYear(own_data, year) {    //return every object, which was launched before the input year
         let yearcup = Number.isInteger(year) ? year : parseInt(year);
         return own_data.filter(
             function(sat)
@@ -53,7 +57,7 @@ function getByYear(own_data, year) {
         );
       }
 
-function getByOrbit(own_data, orbit){
+function getByOrbit(own_data, orbit){   //filter the data by the orbit dinstance
     return own_data.filter(
         function(sat)
         {
@@ -78,7 +82,7 @@ function getByOrbit(own_data, orbit){
     );
 }
 
-function optimazeData(dataset)
+function optimazeData(dataset)  //randomized optimalization, 25% of LEO, 50% of every other object
 {
     let filterOne = getRndInteger(1,4);
     let filterTwo = 0;
@@ -95,6 +99,6 @@ function optimazeData(dataset)
     return dataCup;
 }
 
-function getRndInteger(min, max) {
+function getRndInteger(min, max) {  //random integer from the given min-max range
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
