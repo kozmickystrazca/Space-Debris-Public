@@ -3,7 +3,7 @@
 
 
 /*
-Main function, 
+Main function, which is filtering the given dataset (only the simplified version) 
 */
 export function dataFilter(year, type, orbit, data, isOptimazed) //type: ALL, SAT, JUNK
     {
