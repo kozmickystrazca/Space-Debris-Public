@@ -3,16 +3,14 @@ import { useTranslation } from "react-i18next";
 import "../components/Distance.css";
 
 export default function Distance(props) {
-  const { globeEl } = props;
+  const { globeEl, isCheckedFilter, zoomNum } = props;
   const { t } = useTranslation();
 
   return (
     <div>
       <div className="distance">
         <div> {t("Vzdialenosť")}:</div>
-        {globeEl.current === undefined ? (
-          ""
-        ) : (
+        {globeEl.current && (
           <div
             style={{
               display: "flex",
@@ -23,9 +21,12 @@ export default function Distance(props) {
             {" "}
             <div style={{ fontSize: "1.5rem" }}>~</div>
             <div>
-              {(globeEl.current.controls().getDistance() * 42 - 4242).toFixed(
-                0
-              )}
+              {isCheckedFilter.anima
+                ? zoomNum
+                : (
+                    globeEl.current.controls().getDistance() * 42 -
+                    4242
+                  ).toFixed(0)}
             </div>
             km
           </div>

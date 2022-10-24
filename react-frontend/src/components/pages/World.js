@@ -62,8 +62,14 @@ export default function World() {
         ? false
         : JSON.parse(sessionStorage.getItem("filters")).anima,
   });
-  const [countObjects, setCountObjects] = useState(0);
-  const [countJunk, setJunkCount] = useState(0);
+  const [countObjects, setCountObjects] = useState(0)
+  const [countJunk, setJunkCount] = useState(0)
+  const [zoomNum, setZoomNum] = useState()
+
+  useEffect(()=>{
+
+  })
+
 
   //zoom orbit optimalization
   useEffect(() => {
@@ -79,10 +85,10 @@ export default function World() {
     if (globeEl.current.controls().getDistance() * 42 > 28000)
       satWakeUpZoom("3");
   }, [
-    globeEl.current !== undefined && globeEl.current.controls().getDistance(),
+    globeEl.current && globeEl.current.controls().getDistance()
   ]);
 
-  //session for zoom
+  //set session for zoom
   useEffect(() => {
     if (isOpenModalSatInfo) return;
     const timewait = setTimeout(() => {
@@ -91,10 +97,10 @@ export default function World() {
     }, 500);
     return () => clearTimeout(timewait);
   }, [
-    globeEl.current !== undefined &&
+    globeEl.current &&
       globeEl.current.pointOfView().lng.toFixed(2),
-    globeEl.current !== undefined && globeEl.current.pointOfView().altitude,
-    globeEl.current !== undefined &&
+    globeEl.current && globeEl.current.pointOfView().altitude,
+    globeEl.current &&
       globeEl.current.pointOfView().lat.toFixed(2),
   ]);
 
@@ -344,9 +350,12 @@ export default function World() {
           setSatData={setSatData}
           earthRadiusKm={EARTH_RADIUS_KM}
           time={time}
+          satWakeUpZoom={satWakeUpZoom}
+          isCheckedFilter={isCheckedFilter}
+          setZoomNum={setZoomNum}
         />
 
-        <Distance globeEl={globeEl} />
+        <Distance globeEl={globeEl} isCheckedFilter={isCheckedFilter} zoomNum={zoomNum} />
         <MenuDrawer
           isCheckedFilter={isCheckedFilter}
           setIsCheckedFilter={setIsCheckedFilter}

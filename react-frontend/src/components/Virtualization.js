@@ -30,6 +30,9 @@ export default function Virtualization(props) {
     handleOpenModalSatInfo,
     time,
     earthRadiusKm,
+    satWakeUpZoom,
+    isCheckedFilter,
+    setZoomNum,
   } = props;
 
   //update objects locations
@@ -103,6 +106,26 @@ export default function Virtualization(props) {
         );
       }}
       objectLabel="name"
+      onZoom={isCheckedFilter.anima&&(()=>{
+        if (isOpenModalSatInfo||!no.current) return;
+
+        const sessionView = no.current.pointOfView();
+        sessionStorage.setItem("pointOfView", JSON.stringify(sessionView));
+
+setZoomNum((no.current.controls().getDistance() * 42 - 4242).toFixed(
+  0))
+    if (no.current.controls().getDistance() * 42 < 11000)
+      satWakeUpZoom("1");
+    if (
+      no.current.controls().getDistance() * 42 > 11000 &&
+      no.current.controls().getDistance() * 42 < 28000
+    )
+      satWakeUpZoom("2");
+    if (no.current.controls().getDistance() * 42 > 28000)
+      satWakeUpZoom("3");
+
+
+    })}
       objectLat="lat"
       objectLng="lng"
       objectAltitude="alt"
