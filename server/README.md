@@ -42,7 +42,7 @@ You can fetch our satellite data (cca. 23 000+ satellite and debris) easily by u
         "orbit":"MEO",
         "optTier":1,
         "line1":"1 00005U 58002B   22237.43319354  .00000174  00000-0  22372-3 0  9999",
-        "line2":"2 00005  34.2496 286.8512 1847288 347.9860   8.1844 10.84997181292031"
+        "line2":"2 00005  34.2496 286.8512 1847288 347.9860 167.1844 10.84997181292031"
     }
     ```
 
@@ -73,7 +73,7 @@ You can fetch our satellite data (cca. 23 000+ satellite and debris) easily by u
         },
         "tle":{
             "line1":"1 00005U 58002B   22237.43319354  .00000174  00000-0  22372-3 0  9999",
-            "line2":"2 00005  34.2496 286.8512 1847288 347.9860   8.1844 10.84997181292031"
+            "line2":"2 00005  34.2496 286.8512 1847288 347.9860 167.1844 10.84997181292031"
         }
     }
     ```
@@ -145,5 +145,8 @@ The assigned values are the same as for the routes: [year](#datayearyear), [type
 You can add multiply  parameter at once by devide them with a ***&*** character, for example in case of `/data?year=1998&status=-` you will got every **nonoperational** object from the year **1998**.  
 Also, you can add different value for the same parameter (excluded the year). For example, if you want to fetch every space object with the the type of **payload** and status of **P**, **B** and **S**, from the year 2017, you shouldd use the next url:  
     **`/data?type=PAY&status=P&status=B&status=S&year=2017`**
+
+>The TLE data were fetched from space-trak.org, but we only used the subset of them and the Keplerian elements have been slightly modified that they do not carry any information applicable for further usage of the data.
+>The raw NORAD satcat was fetched from celestrak.org in CSV format.
 
 

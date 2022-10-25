@@ -22,13 +22,13 @@ This node.js program was created to create a specific satellite dataset (and it'
     ```txt
     0 VANGUARD 1
     1 00005U 58002B   22237.43319354  .00000174  00000-0  22372-3 0  9999
-    2 00005  34.2496 286.8512 1847288 347.9860   8.1844 10.84997181292031
+    2 00005  34.2496 286.8512 1847288 347.9860 167.1844 10.84997181292031
     0 VANGUARD 2
     1 00011U 59001A   22237.55487365  .00000010  00000-0  99351-5 0  9999
-    2 00011  32.8673 294.3638 1466394  83.9119 292.6020 11.86163350369869
+    2 00011  32.8673 294.3638 1466394  83.9119 302.6020 11.86163350369869
     0 VANGUARD R/B
     1 00012U 59001B   22237.84584548  .00000000  00000-0 -11511-4 0  9994
-    2 00012  32.9081  73.4198 1665764 319.7018  29.1053 11.44691889371578
+    2 00012  32.9081  73.4198 1665764 319.7018 122.1053 11.44691889371578
     ...
     ```
     >We will use the NORAD ID to identificate the given object, and the name for them will be given later from the catalog, so it's not problem, if the name not start with ***0*** just like in the nex example.
@@ -92,7 +92,7 @@ This node.js program was created to create a specific satellite dataset (and it'
         },
         "tle":{
             "line1":"1 00005U 58002B   22237.43319354  .00000174  00000-0  22372-3 0  9999",
-            "line2":"2 00005  34.2496 286.8512 1847288 347.9860   8.1844 10.84997181292031"
+            "line2":"2 00005  34.2496 286.8512 1847288 347.9860 167.1844 10.84997181292031"
         }
     }
     ```
@@ -111,7 +111,7 @@ This node.js program was created to create a specific satellite dataset (and it'
         "orbit":"MEO",
         "optTier":1,
         "line1":"1 00005U 58002B   22237.43319354  .00000174  00000-0  22372-3 0  9999",
-        "line2":"2 00005  34.2496 286.8512 1847288 347.9860   8.1844 10.84997181292031"
+        "line2":"2 00005  34.2496 286.8512 1847288 347.9860 167.1844 10.84997181292031"
     }
     ```
     > Because most of the computers and devices have limited resources, we added an extra optimalization option in the menu. When this  option is checked, we reduce the number of objects by 75% on the **LEO** (*Low Earth Orbit*) and by 50% on everywhere else. Since we want to keep the distribution even and not have random empty areas during the animation, we numbered the objects from one to four (***optTier***). This way, we can easily reduce the number of objects by 25-50-75 percent, wWithout the fear of destabilising the balance.
