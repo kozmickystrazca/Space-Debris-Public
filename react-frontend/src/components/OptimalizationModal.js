@@ -34,12 +34,17 @@ export default function OptimalizationModal(props) {
               Bol zaznamenaný nižší výkon!
             </div>
             <div className="optimalization-buttons">
-              <div className="menu-button" onClick={optimalization}>
+              <div
+                className="menu-button"
+                id="button-optimalization"
+                onClick={optimalization}
+              >
                 OPTIMALIZOVAŤ
               </div>
               <div
                 className="menu-button"
                 onClick={() => setIsSlowModal(false)}
+                id="button-continue"
               >
                 POKRAČOVAŤ
               </div>

@@ -29,14 +29,14 @@ export default function MenuDrawer(props) {
     let status = e.target.id;
     switch (status) {
       case "+":
-        if (isCheckedFilter.satellite === "")
-          setIsCheckedFilter({ ...isCheckedFilter, satellite: "SAT" });
-        else setIsCheckedFilter({ ...isCheckedFilter, satellite: "" });
+        if (isCheckedFilter.satellite === false)
+          setIsCheckedFilter({ ...isCheckedFilter, satellite: true });
+        else setIsCheckedFilter({ ...isCheckedFilter, satellite: false });
         break;
       case "-":
-        if (isCheckedFilter.garbage === "")
-          setIsCheckedFilter({ ...isCheckedFilter, garbage: "JUNK" });
-        else setIsCheckedFilter({ ...isCheckedFilter, garbage: "" });
+        if (isCheckedFilter.garbage === false)
+          setIsCheckedFilter({ ...isCheckedFilter, garbage: true });
+        else setIsCheckedFilter({ ...isCheckedFilter, garbage: false });
         break;
       case "LOW":
         if (isCheckedFilter.LOW === false)
@@ -76,7 +76,11 @@ export default function MenuDrawer(props) {
         MENU
       </div>
 
-      <Drawer open={menuDrawer} onClose={() => setMenuDrawer(false)}>
+      <Drawer
+        id="drawer-menu"
+        open={menuDrawer}
+        onClose={() => setMenuDrawer(false)}
+      >
         <Box
           className="drawer"
           sx={{ width: 230 }}
@@ -95,7 +99,7 @@ export default function MenuDrawer(props) {
               <input
                 id="+"
                 type="checkbox"
-                checked={isCheckedFilter.satellite === "" ? false : true}
+                checked={isCheckedFilter.satellite === false ? false : true}
                 onChange={filterStatus}
               />
               <div className="filter-subname">{t("Satelit")}</div>
@@ -104,7 +108,7 @@ export default function MenuDrawer(props) {
               <input
                 id="-"
                 type="checkbox"
-                checked={isCheckedFilter.garbage === "" ? false : true}
+                checked={isCheckedFilter.garbage === false ? false : true}
                 onChange={filterStatus}
               />
               <div className="filter-subname">{t("Odpad")}</div>

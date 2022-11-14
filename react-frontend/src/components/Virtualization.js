@@ -35,6 +35,8 @@ export default function Virtualization(props) {
     setZoomNum,
   } = props;
 
+  const distanceFromGlobe = no.current && no.current.controls().getDistance();
+
   //update objects locations
   const objectsData = useMemo(() => {
     if (!satData) return [];
@@ -72,7 +74,7 @@ export default function Virtualization(props) {
     return data;
   }, [satData, time]);
 
-//get clicked object data from backend
+  //get clicked object data from backend
   async function fetchInfoOnClick(apiUrl, obj) {
     try {
       const response = await fetch(apiUrl);
@@ -106,26 +108,21 @@ export default function Virtualization(props) {
         );
       }}
       objectLabel="name"
-      onZoom={isCheckedFilter.anima&&(()=>{
-        if (isOpenModalSatInfo||!no.current) return;
+      onZoom={
+        isCheckedFilter.anima &&
+        (() => {
+          if (isOpenModalSatInfo || !no.current) return;
 
-        const sessionView = no.current.pointOfView();
-        sessionStorage.setItem("pointOfView", JSON.stringify(sessionView));
+          const sessionView = no.current.pointOfView();
+          sessionStorage.setItem("pointOfView", JSON.stringify(sessionView));
 
-setZoomNum((no.current.controls().getDistance() * 42 - 4242).toFixed(
-  0))
-    if (no.current.controls().getDistance() * 42 < 11000)
-      satWakeUpZoom("1");
-    if (
-      no.current.controls().getDistance() * 42 > 11000 &&
-      no.current.controls().getDistance() * 42 < 28000
-    )
-      satWakeUpZoom("2");
-    if (no.current.controls().getDistance() * 42 > 28000)
-      satWakeUpZoom("3");
-
-
-    })}
+          setZoomNum((distanceFromGlobe * 42 - 4242).toFixed(0));
+          if (distanceFromGlobe * 42 < 11000) satWakeUpZoom("1");
+          if (distanceFromGlobe * 42 > 11000 && distanceFromGlobe * 42 < 28000)
+            satWakeUpZoom("2");
+          if (distanceFromGlobe * 42 > 28000) satWakeUpZoom("3");
+        })
+      }
       objectLat="lat"
       objectLng="lng"
       objectAltitude="alt"

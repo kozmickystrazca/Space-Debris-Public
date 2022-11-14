@@ -3,7 +3,11 @@ import Virtualization from "../Virtualization";
 import * as satellite from "satellite.js";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import "../pages/World.css";
-import { dataFilter, orbitParamGenerator } from "../../util/filter.js";
+import {
+  dataFilter,
+  dataFilterCounter,
+  orbitParamGenerator,
+} from "../../util/filter";
 import Slider from "../Slider";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -51,8 +55,8 @@ export default function World() {
   const [satData, setSatData] = useState();
   const [year, setYear] = useState(1970);
   const [isCheckedFilter, setIsCheckedFilter] = useState({
-    satellite: "SAT",
-    garbage: "JUNK",
+    satellite: true,
+    garbage: true,
     LOW: true,
     MID: true,
     STA: true,
@@ -62,47 +66,46 @@ export default function World() {
         ? false
         : JSON.parse(sessionStorage.getItem("filters")).anima,
   });
-  const [countObjects, setCountObjects] = useState(0)
-  const [countJunk, setJunkCount] = useState(0)
-  const [zoomNum, setZoomNum] = useState()
-
-  useEffect(()=>{
-
-  })
-
+  const [countObjects, setCountObjects] = useState(0);
+  const [countJunk, setJunkCount] = useState(0);
+  const [zoomNum, setZoomNum] = useState();
+  const cameraView = globeEl.current && globeEl.current.pointOfView();
+  const distanceFromGlobe =
+    globeEl.current && globeEl.current.controls().getDistance();
+  const cameraViewLng =
+    globeEl.current && globeEl.current.pointOfView().lng.toFixed(2);
+  const cameraViewLat =
+    globeEl.current && globeEl.current.pointOfView().lat.toFixed(2);
+  const cameraViewAltitude =
+    globeEl.current && globeEl.current.pointOfView().altitude;
 
   //zoom orbit optimalization
   useEffect(() => {
     if (isOpenModalSatInfo) return;
-
-    if (globeEl.current.controls().getDistance() * 42 < 11000)
-      satWakeUpZoom("1");
-    if (
-      globeEl.current.controls().getDistance() * 42 > 11000 &&
-      globeEl.current.controls().getDistance() * 42 < 28000
-    )
-      satWakeUpZoom("2");
-    if (globeEl.current.controls().getDistance() * 42 > 28000)
-      satWakeUpZoom("3");
-  }, [
-    globeEl.current && globeEl.current.controls().getDistance()
-  ]);
+    switch (true) {
+      case distanceFromGlobe * 42 < 11000:
+        satWakeUpZoom("1");
+        break;
+      case  distanceFromGlobe * 42 <= 28000:
+        satWakeUpZoom("2");
+        break;
+      case distanceFromGlobe * 42 > 28000:
+        satWakeUpZoom("3");
+        break;
+      default:
+        console.log("error zoom");
+    }
+  }, [distanceFromGlobe]);
 
   //set session for zoom
   useEffect(() => {
     if (isOpenModalSatInfo) return;
     const timewait = setTimeout(() => {
-      const sessionView = globeEl.current.pointOfView();
+      const sessionView = cameraView;
       sessionStorage.setItem("pointOfView", JSON.stringify(sessionView));
     }, 500);
     return () => clearTimeout(timewait);
-  }, [
-    globeEl.current &&
-      globeEl.current.pointOfView().lng.toFixed(2),
-    globeEl.current && globeEl.current.pointOfView().altitude,
-    globeEl.current &&
-      globeEl.current.pointOfView().lat.toFixed(2),
-  ]);
+  }, [cameraViewLat, cameraViewLng, cameraViewAltitude]);
 
   //fetch data from backend based on user selections from filters
   async function fetching(apiUrl) {
@@ -112,85 +115,45 @@ export default function World() {
         let result = await response.json();
         let orbit = "";
         let filter = "";
-        if (globeEl.current.controls().getDistance() * 42 < 11000)
-          orbit = orbitParamGenerator(isCheckedFilter.LOW, false, false);
-        if (
-          globeEl.current.controls().getDistance() * 42 > 11000 &&
-          globeEl.current.controls().getDistance() * 42 < 28000
-        )
-          orbit = orbitParamGenerator(
-            isCheckedFilter.LOW,
-            isCheckedFilter.MID,
-            false
-          );
-        if (globeEl.current.controls().getDistance() * 42 > 28000)
-          orbit = orbitParamGenerator(
-            isCheckedFilter.LOW,
-            isCheckedFilter.MID,
-            isCheckedFilter.STA
-          );
+        switch (true) {
+          case distanceFromGlobe * 42 < 11000:
+            orbit = orbitParamGenerator(isCheckedFilter.LOW, false, false);
+            break;
+          case  distanceFromGlobe * 42 < 28000:
+            orbit = orbitParamGenerator(
+              isCheckedFilter.LOW,
+              isCheckedFilter.MID,
+              false
+            );
+            break;
+          case distanceFromGlobe * 42 > 28000:
+            orbit = orbitParamGenerator(
+              isCheckedFilter.LOW,
+              isCheckedFilter.MID,
+              isCheckedFilter.STA
+            );
+            break;
+          default:
+            console.log("error zoom");
+        }
+        
 
-        let filterCount = "";
         let orbitByUser = orbitParamGenerator(
           isCheckedFilter.LOW,
           isCheckedFilter.MID,
           isCheckedFilter.STA
         );
 
-        if (
-          isCheckedFilter.satellite === "SAT" &&
-          isCheckedFilter.garbage === "JUNK"
-        ) {
-          filter = dataFilter(year, "ALL", orbit, result, isCheckedFilter.less);
-          filterCount = dataFilter(
-            year,
-            "ALL",
-            orbitByUser,
-            result,
-            isCheckedFilter.less
-          );
-        }
-        if (
-          isCheckedFilter.satellite === "SAT" &&
-          isCheckedFilter.garbage === ""
-        ) {
-          filter = dataFilter(
-            year,
-            isCheckedFilter.satellite,
-            orbit,
-            result,
-            isCheckedFilter.less
-          );
-          filterCount = dataFilter(
-            year,
-            isCheckedFilter.satellite,
-            orbitByUser,
-            result,
-            isCheckedFilter.less
-          );
-        }
-        if (
-          isCheckedFilter.garbage === "JUNK" &&
-          isCheckedFilter.satellite === ""
-        ) {
-          filter = dataFilter(
-            year,
-            isCheckedFilter.garbage,
-            orbit,
-            result,
-            isCheckedFilter.less
-          );
-          filterCount = dataFilter(
-            year,
-            isCheckedFilter.garbage,
-            orbitByUser,
-            result,
-            isCheckedFilter.less
-          );
-        }
+        filter = dataFilter(
+          year,
+          isCheckedFilter.satellite,
+          isCheckedFilter.garbage,
+          orbit,
+          result,
+          isCheckedFilter.less
+        );
+
         let array = [];
-        let count = 0;
-        let junk = 0;
         let tempSatrec = "";
         let tempPropagate = "";
         let color = "";
@@ -211,12 +174,17 @@ export default function World() {
             ID: filter[i].id,
           });
         }
-        for (let i = 1; i < filterCount.length; i++) {
-          if (filterCount[i].satellite === true) count += 1;
-          else junk += 1;
-        }
-        setCountObjects(count);
-        setJunkCount(junk);
+        const getCount = dataFilterCounter(
+          year,
+          isCheckedFilter.satellite,
+          isCheckedFilter.garbage,
+          orbitByUser,
+          result,
+          isCheckedFilter.less
+        );
+        setCountObjects(getCount.satellite);
+        setJunkCount(getCount.junk);
+
         if (objectInfoOnClick.object !== "") {
           const just = array.map((x) => {
             if (x.ID === objectInfoOnClick.object.ID) {
@@ -355,7 +323,11 @@ export default function World() {
           setZoomNum={setZoomNum}
         />
 
-        <Distance globeEl={globeEl} isCheckedFilter={isCheckedFilter} zoomNum={zoomNum} />
+        <Distance
+          globeEl={globeEl}
+          isCheckedFilter={isCheckedFilter}
+          zoomNum={zoomNum}
+        />
         <MenuDrawer
           isCheckedFilter={isCheckedFilter}
           setIsCheckedFilter={setIsCheckedFilter}

@@ -1,17 +1,31 @@
-# SPACE GUARDIAN react-fronted
+# Getting Started with SPACE GUARDIAN
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Development
+## Available Scripts
 
-### Installing and Running
+In the project directory, you can run:
 
-1. Check that you have all prerequisites (Git, Yarn or Npm,).
-2. Clone this repository locally.
-3. Execute `yarn install` and then `yarn start` from the root directory of this readme.md.
-4. Open http://localhost:3000/kozmickyodpad in your browser.
+### `yarn start`
 
-### Build
+Runs the app in the development mode.\
+Open [http://localhost:3000/kozmickyodpad](http://localhost:3000/kozmickyodpad) to view it in your browser.
 
- - Execute `yarn build` from the root directory of this readme.md.
- - This create a build folder where the production version is located.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

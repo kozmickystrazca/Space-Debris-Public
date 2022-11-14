@@ -11,7 +11,7 @@ export default function Home() {
   const [language, setLanguage] = useState();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
+
   //change language when click on button
   const handleLanguage = () => {
     if (i18n.language === "en") {
